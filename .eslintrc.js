@@ -5,14 +5,9 @@ module.exports = {
         "node": true
     },
     "extends": [
-        "eslint:recommended",   
-        "plugin/react:recommended"
-
+        "eslint:recommended",
+        "plugin:react/recommended"
     ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -25,21 +20,21 @@ module.exports = {
     ],
     "rules": {
         "indent": [
-        "error",
-        2
+            "error",
+            2
         ],
-        "linebreak-style":[
-        "error",
-        "unix"
+        "linebreak-style": [
+            "error",
+            "unix"
         ],
-        "quotes":[
-         "error",
-         "double"
+        "quotes": [
+            "error",
+            "double"
         ],
-        "semi":[
-        "error",
-        "always"
+        "semi": [
+            "error",
+            "always"
         ],
-        "no-console" :"off"
+        "no-console": "off"
     }
 };
