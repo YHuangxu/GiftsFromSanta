@@ -3,10 +3,8 @@ body {
   font-family: sans-serif;
 }
 .card-img-top {
+  max-height: 250px;
   max-width: 250px;
-  max-height: 400px;
-  height: auto;
-  position: bottom;
 }
 
 .card {
@@ -23,7 +21,10 @@ body {
 .card-text {
 
 }
-
+.img-box {
+  width: 250px;
+  height: 250px;
+}
 .card .container {
   padding: 5%;
 

@@ -6,6 +6,8 @@ import { withTracker } from "meteor/react-meteor-data";
 import PropTypes from "prop-types";
 
 class WishBoard extends Component {
+  generateWish(wish){
+  }
   render() {
     return (
       <div className = "container">

@@ -105,7 +105,7 @@ class GiftList extends Component {
             <div key={gift._id} className="card col-xs-6 col-s-3">
               <div className = "container">
                 <div className="card-top text-right count"><img src = "https://cdn2.iconfinder.com/data/icons/picons-essentials/71/gift-512.png" width = "30px"/>{gift.amount}</div>
-                <img className="card-img-top" src={gift.url} alt={gift.name}/>
+                <div className ="container img-box"><img className="card-img-top" src={gift.url} alt={gift.name}/></div>
                 <div className="card-body">
                   <h5 className = "card-text text-center">{gift.name}</h5>
                   <div id = "{{#if selected(gift._id)}} itemSelected {{/if}}">

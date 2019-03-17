@@ -18,15 +18,13 @@ class App extends Component {
           <WishBoard />
           <div className = "container">
             <div className = "row">
-              <div className = "d-none d-sm-block col-sm-4">
-                
-              </div>
-              <div className = "col-xs-12 col-sm-8">
-                
+              <div className = "col-xs-12 col-sm-11">
                 <Switch>
                   <Route exact path="/" component={HomePage} />
                   <Route path="/gifts" component={GiftList} />
                 </Switch>
+              </div>
+              <div className = "d-none d-sm-block col-sm-1">
               </div>
             </div>
           </div>
