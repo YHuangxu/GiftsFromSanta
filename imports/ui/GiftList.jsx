@@ -8,10 +8,34 @@ class GiftList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      curId: "",
-      curAmt: "",
-      selected:[]
+      newName: "",
+      newUrl: "",
+      selected:[""]
     };
+    this.onChange = this.onChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onChange(e){
+    this.setState(
+      {
+        [e.target.id]: e.target.value
+      }
+    );
+  }
+
+  onSubmit() {
+    let info = {
+      name:this.state.newName,
+      url: this.state.newUrl
+    };
+    Meteor.call("gifts.insert",info, (err, res) => {
+      if (err) {
+        alert("There was error updating check the console");
+        console.log(err);
+      }
+      console.log("succeed",res);
+    });
   }
 
   onClick(evt) {
@@ -29,8 +53,10 @@ class GiftList extends Component {
     });
 
     if (evt.target.id === "addItem") {
+      var newSelected = [].concat(this.state.selected);
+      newSelected.push(evt.target.name);
       this.setState({
-        selected:[...evt.target.name]
+        selected: newSelected
       });
     }
 
@@ -62,6 +88,19 @@ class GiftList extends Component {
     return (
       <div className = "container">
         <div className="row">
+          <form id="newItemForm">
+            <div className = "form-group">
+              <label>name</label>
+              <input type="text" className="form-control" id="newName" onChange= {this.onChange.bind(this)}/>
+            </div>
+            <div className = "form-group">
+              <label>url</label>
+              <input type="text" className="form-control" id="newUrl" onChange= {this.onChange.bind(this)}/>
+            </div>
+            <button type="button" className="btn btn-danger" data-target = "#newItemForm" onClick = {this.onSubmit.bind(this)}>Add New</button>
+          </form>
+        </div>
+        <div className="row">
           {this.props.gifts.map(gift => (
             <div key={gift._id} className="card col-xs-6 col-s-3">
               <div className = "container">
@@ -69,8 +108,8 @@ class GiftList extends Component {
                 <img className="card-img-top" src={gift.url} alt={gift.name}/>
                 <div className="card-body">
                   <h5 className = "card-text text-center">{gift.name}</h5>
-                  <div className = "{{#if selected(gift._id)}} selected {{/if}}">
-                    <button type="button" className="btn btn-success" id="addItem" name={gift._id} onClick = {this.onClick.bind(this)}>I want this!</button>
+                  <div id = "{{#if selected(gift._id)}} itemSelected {{/if}}">
+                    <button type="button" className="btn btn-success" id="addItem" name={gift._id} onClick = {this.onClick.bind(this)}>I want it!</button>
                     <button type="button" className="btn btn-warning" id="removeItem" name={gift._id} onClick = {this.onClick.bind(this)}>Remove</button>
                   </div>
                 </div>
@@ -90,7 +129,11 @@ GiftList.propTypes = {
 export default withTracker(() => {
   const handle = Meteor.subscribe("gifts");
   return {
-    gifts: Gifts.find({}).fetch(),
+    gifts: Gifts.find({}, {
+      sort: {
+        amount: -1
+      }
+    }).fetch(),
     user: Meteor.user(),
     ready : handle.ready()
   };

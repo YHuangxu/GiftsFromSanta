@@ -8,13 +8,14 @@ import PropTypes from "prop-types";
 class WishBoard extends Component {
   render() {
     return (
-      <div className = "container billboard">
+      <div className = "container">
         <div className="row">
           {this.props.wishes.map(wish => (
             <div key={wish._id} className="">
               <div className = "container" >
-                <ul id= "wishBoard">
-                </ul>
+                <div>
+                  <h5>WishBoard</h5>
+                </div>
               </div>
             </div>
           ))}
