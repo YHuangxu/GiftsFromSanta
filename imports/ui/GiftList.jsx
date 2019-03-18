@@ -42,7 +42,8 @@ class GiftList extends Component {
     let info = {
       id:evt.target.name,
       amt: evt.target.id === "addItem"? 1 : -1,
-      user: Meteor.userId()
+      userId: Meteor.userId(),
+      userName: Meteor.user().username
     };
 
     Meteor.call("gifts.updateAmt", info,(err, res) => {

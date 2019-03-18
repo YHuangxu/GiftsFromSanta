@@ -7,8 +7,9 @@ body {
 }
 
 .card-img-top {
-  max-width: 240px;
-  max-height: 240px;
+  padding:2%;
+  max-width: 220px;
+  max-height: 250px;
   overflow: hidden;
 }
 
@@ -37,8 +38,8 @@ body {
 .img-box {
   background-color: white;
   opacity: 0.95;
-  width: 240px;
-  height: 240px;
+  width: 220px;
+  height: 250px;
   overflow: hidden;
 }
 .card .container {

@@ -85,7 +85,8 @@ class MyWishes extends Component {
 
 MyWishes.propTypes = {
   wishes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  gifts: PropTypes.arrayOf(PropTypes.object).isRequired
+  gifts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  ready: PropTypes.bool.isRequired
 };
 
 export default withTracker(() => {
@@ -94,7 +95,7 @@ export default withTracker(() => {
   
   return {
     wishes: Wishes.find({},{
-      username: Meteor.userId(), 
+      userId: Meteor.userId(), 
       sort: {createdAt: -1}}).fetch(),
     gifts: Gifts.find({}).fetch(),
     user: Meteor.user(),

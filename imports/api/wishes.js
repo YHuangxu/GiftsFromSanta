@@ -16,36 +16,21 @@ if (Meteor.isServer) {
   });
 }
 
-  // Meteor.publish("giftsOfWishes", function giftsOfWishesPublication() {
-  //   let list=[];
-  //   list.push(Wishes.find({}, {
-  //     limit: 10, // top ten wishes
-  //     sort: {
-  //       createdAt: -1
-  //     }
-  //   }));
-  //   let res = [];
-  //   for (var i = 0; i < list.length;i++) {
-  //     res.push(Gifts.findOne({
-  //       _id: list[i].giftId
-  //     }));
-  //   };
-  //   return res;
-  // });
-
-  Meteor.methods({
-    "wishes.insert"(info) {
-      check(info.user, String);
-      check(info.id, String);
-      if (!this.userId) {
-        throw new Meteor.Error("not-authorized");
-      }
-      Wishes.insert({
-        username: info.user,
-        giftId: info.id,
-        createdAt: Date.now()
-      });
-    }, 
+Meteor.methods({
+  "wishes.insert"(info) {
+    check(info.userId, String);
+    check(info.userName, String);
+    check(info.id, String);
+    if (!this.userId) {
+      throw new Meteor.Error("not-authorized");
+    }
+    Wishes.insert({
+      userId: info.userId,
+      username: info.userName,
+      giftId: info.id,
+      createdAt: Date.now()
+    });
+  }, 
 
   "wishes.remove"(id) {
     check(id, String);
@@ -58,20 +43,22 @@ if (Meteor.isServer) {
   }, 
 
   "wishes.update"(info) {
-    check(info.user, String);
+    check(info.userId, String);
+    check(info.userName, String);
     check(info.id, String);
     if (!this.userId) {
       throw new Meteor.Error("not-authorized");
     }
     if (info.amt > 0) {
       Wishes.insert({
-        username: info.user,
+        userId: info.userId,
+        username: info.userName,
         giftId: info.id,
         createdAt: Date.now()
       });
     } else {
       Wishes.remove({
-        username: info.user,
+        userId: info.userId,
         giftId: info.id
       });
     }

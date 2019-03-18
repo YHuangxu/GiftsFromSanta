@@ -41,7 +41,16 @@ Meteor.methods({
       {$inc:{amount: info.amt}}
     );
     //Gifts.remove({amount:0});
-  }
+  },
+  "gift.getOne"(giftId) {
+    check(giftId, String);
+    if (!this.userId) {
+      throw new Meteor.Error("not-authorized");
+    }
+    Gifts.findOne({
+      _id: giftId
+    });
+  }, 
 });
 
 
