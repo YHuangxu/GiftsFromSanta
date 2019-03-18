@@ -14,6 +14,11 @@ class GiftList extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    console.log(Gifts.find({}, {
+      sort: {
+        amount: -1
+      }
+    }));
   }
 
   onChange(e){
@@ -90,8 +95,6 @@ class GiftList extends Component {
     }
     return false;
   }
-
-
 
   render() {
     return (

@@ -30,6 +30,16 @@ Meteor.methods({
     });
   }, 
 
+  "wishes.remove"(id) {
+    check(id, String);
+    if (!this.userId) {
+      throw new Meteor.Error("not-authorized");
+    }
+    Wishes.remove({
+      _id: id
+    });
+  }, 
+
   "wishes.update"(info) {
     check(info.user, String);
     check(info.id, String);

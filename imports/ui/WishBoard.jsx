@@ -10,56 +10,21 @@ class WishBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      newGiftId: "",
     };
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onChange(e){
-    this.setState(
-      {
-        [e.target.id]: e.target.value
-      }
-    );
-  }
-
-  onSubmit() {
-    let info = {
-      id: this.state.newGiftId,
-      user: Meteor.userId()
-    };
-    Meteor.call("wishes.insert",info, (err, res) => {
-      if (err) {
-        alert("There was error updating check the console");
-        console.log(err);
-      }
-      console.log("succeed",res);
-    });
-  }
-
-  getGiftName(giftId) {
-    let found = Gifts.findOne({"_id": giftId});
-    return found.name;
-  }
+  // getGiftName(giftId) {
+  //   return Gifts.findOne({_id: giftId}).name;
+  // }
 
   render() {
     return (
       <div className = "container">
         <div className="row">
-          <form id="newWishForm">
-            <div className = "form-group">
-              <label>//WishBoard//for development ONLY, addGiftId</label>
-              <input type="text" className="form-control" id="newGiftId" onChange= {this.onChange.bind(this)}/>
-            </div>
-            <button type="button" className="btn btn-danger" data-target = "#newWishForm" onClick = {this.onSubmit.bind(this)}>Add Wish</button>
-          </form>
-        </div>
-        <div className="row">
           {this.props.wishes.map(wish => (
-            <div key={wish._id} className="col-12">
-              <div className = "container" >
-                <h5>{wish.username} asked for a {this.getGiftName(wish.giftId).bind(this)}</h5>
+            <div key={wish._id}>
+              <div className = "container marquee">
+                <p className = "label-txt">{wish.username} asked for a {wish.giftId}</p>
               </div>
             </div>
           ))}
@@ -76,14 +41,15 @@ WishBoard.propTypes = {
 
 export default withTracker(() => {
   const handle = Meteor.subscribe("wishes");
+  const handle2 = Meteor.subscribe("gifts");
   return {
-    wishes: Wishes.find({
-      limit:20,
+    wishes: Wishes.find({},{
+      limit: 10,
       sort: {
         createdAt: -1
       }
     }).fetch(),
     user: Meteor.user(),
-    ready : handle.ready()
+    ready : handle.ready() && handle2.ready()
   };
 })(WishBoard);

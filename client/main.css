@@ -21,6 +21,7 @@ body {
 .card-text {
 
 }
+
 .img-box {
   width: 250px;
   height: 250px;
@@ -38,6 +39,11 @@ body {
 }
 #removeItem {
     display:inline-block;
+}
+
+.myWishList img {
+max-height: 150px;
+max-width: 150px;
 }
 /*#addItem {
     display:block;
