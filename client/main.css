@@ -7,12 +7,14 @@ body {
 }
 
 .card-img-top {
-  max-width: 250px;
+  max-width: 240px;
   max-height: 240px;
   overflow: hidden;
 }
 
 .card {
+  background-image: url(http://ridgewoodparkchurch.org/new/wp-content/uploads/2010/12/snowflakes.gif);
+  background-repeat: repeat;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   opacity: 0.9;
   margin: 10px;
@@ -34,6 +36,7 @@ body {
 
 .img-box {
   background-color: white;
+  opacity: 0.95;
   width: 240px;
   height: 240px;
   overflow: hidden;

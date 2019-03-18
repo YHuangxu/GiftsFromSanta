@@ -34,7 +34,7 @@ export default class NavBar extends Component {
     return (
       <div>
         <nav className="navbar bg-danger">
-          <a className="navbar-brand nav-link" activeClassName="active" to="/">
+          <a>
             Gifts from Santa
           </a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -84,7 +84,8 @@ class MyWishes extends Component {
 }
 
 MyWishes.propTypes = {
-  wishes: PropTypes.arrayOf(PropTypes.object).isRequired
+  wishes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  gifts: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default withTracker(() => {

@@ -12,14 +12,22 @@ class WishBoard extends Component {
     this.state = {
       wishes: this.props.wishes
     };
+    console.log(this.props.wishes);
+  }
+
+  getDisplay(){
+    //return this.props.wishes[0].username;
+  }
+
+  componentDidMount() {
+    this.getDisplay();
   }
 
   render() {
-    let i = 0;
     return (
       <div className = "container">
         <div className="row">
-          {this.state.wishes[i]}
+          WishBoard
         </div>
       </div>
     );
@@ -27,9 +35,9 @@ class WishBoard extends Component {
 }
 
 WishBoard.propTypes = {
-  wishes: PropTypes.arrayOf(PropTypes.object).isRequired
+  wishes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  gifts: PropTypes.arrayOf(PropTypes.object).isRequired
 };
-
 
 export default withTracker(() => {
   const handle = Meteor.subscribe("wishes");
@@ -41,6 +49,7 @@ export default withTracker(() => {
         createdAt: -1
       }
     }).fetch(),
+    gifts: Gifts.find({}).fetch(),
     user: Meteor.user(),
     ready : handle.ready() && handle2.ready()
   };

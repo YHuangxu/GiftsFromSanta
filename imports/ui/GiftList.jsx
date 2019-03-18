@@ -14,11 +14,6 @@ class GiftList extends Component {
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    console.log(Gifts.find({}, {
-      sort: {
-        amount: -1
-      }
-    }));
   }
 
   onChange(e){
@@ -114,9 +109,9 @@ class GiftList extends Component {
         </div>
         <div className="row">
           {this.props.gifts.map(gift => (
-            <div key={gift._id} className="card text-dark col-xs-6 col-s-3">
+            <div key={gift._id} className="card text-light col-xs-6 col-s-3">
               <div className = "container">
-                <div className="card-top text-right text-dark count"><img src = "https://cdn2.iconfinder.com/data/icons/picons-essentials/71/gift-512.png" width = "30px"/>{gift.amount}</div>
+                <div className="card-top text-right text-light count"><img src = "https://cdn2.iconfinder.com/data/icons/picons-essentials/71/gift-512.png" width ="30px"/>{gift.amount}</div>
                 <div className ="container img-box"><img className="card-img-top img-rounded" src={gift.url} alt={gift.name}/></div>
                 <div className="card-body">
                   <h5 className = "card-text text-center">{gift.name}</h5>
