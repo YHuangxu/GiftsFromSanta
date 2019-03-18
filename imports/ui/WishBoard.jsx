@@ -26,8 +26,8 @@ class WishBoard extends Component {
 
   onSubmit() {
     let info = {
-      giftId: this.state.newGiftId,
-      username: Meteor.userId()
+      id: this.state.newGiftId,
+      user: Meteor.userId()
     };
     Meteor.call("wishes.insert",info, (err, res) => {
       if (err) {

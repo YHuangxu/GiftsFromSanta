@@ -18,15 +18,35 @@ if (Meteor.isServer) {
 
 Meteor.methods({
   "wishes.insert"(info) {
-    check(info.username, String);
-    check(info.giftId, String);
+    check(info.user, String);
+    check(info.id, String);
     if (!this.userId) {
       throw new Meteor.Error("not-authorized");
     }
     Wishes.insert({
-      username: info.username,
-      giftId: info.giftId,
+      username: info.user,
+      giftId: info.id,
       createdAt: Date.now()
     });
   }, 
+
+  "wishes.update"(info) {
+    check(info.user, String);
+    check(info.id, String);
+    if (!this.userId) {
+      throw new Meteor.Error("not-authorized");
+    }
+    if (info.amt > 0) {
+      Wishes.insert({
+        username: info.user,
+        giftId: info.id,
+        createdAt: Date.now()
+      });
+    } else {
+      Wishes.remove({
+        username: info.user,
+        giftId: info.id
+      });
+    }
+  }
 });

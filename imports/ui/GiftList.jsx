@@ -41,10 +41,19 @@ class GiftList extends Component {
   onClick(evt) {
     let info = {
       id:evt.target.name,
-      amt: evt.target.id === "addItem"? 1 : -1
+      amt: evt.target.id === "addItem"? 1 : -1,
+      user: Meteor.userId()
     };
 
     Meteor.call("gifts.updateAmt", info,(err, res) => {
+      if (err) {
+        alert("There was error updating check the console");
+        console.log(err);
+      }
+      console.log("succeed",res);
+    });
+
+    Meteor.call("wishes.update", info, (err, res) => {
       if (err) {
         alert("There was error updating check the console");
         console.log(err);
