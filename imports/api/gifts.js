@@ -40,7 +40,7 @@ Meteor.methods({
       {_id: targetId},
       {$inc:{amount: info.amt}}
     );
-    Gifts.remove({amount:0});
+    //Gifts.remove({amount:0});
   }
 });
 
