@@ -10,24 +10,16 @@ class WishBoard extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      wishes: this.props.wishes
     };
   }
 
-  // getGiftName(giftId) {
-  //   return Gifts.findOne({_id: giftId}).name;
-  // }
-
   render() {
+    let i = 0;
     return (
       <div className = "container">
         <div className="row">
-          {this.props.wishes.map(wish => (
-            <div key={wish._id}>
-              <div className = "container marquee">
-                <p className = "label-txt">{wish.username} asked for a {wish.giftId}</p>
-              </div>
-            </div>
-          ))}
+          {this.state.wishes[i]}
         </div>
       </div>
     );

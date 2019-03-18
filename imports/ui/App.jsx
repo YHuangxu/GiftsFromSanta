@@ -10,22 +10,27 @@ import { withTracker } from "meteor/react-meteor-data";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
+  // <div className = "d-none d-sm-block col-sm-1">
+  //             </div>
   render() {
     return (
       <Router>
         <div>
-          <NavBar />
-          <WishBoard />
+          <div id="header">
+            <NavBar />
+          </div>
+          <div>
+            <WishBoard />
+          </div>
+          
           <div className = "container">
             <div className = "row">
-              <div className = "col-xs-12 col-sm-11">
+              <div className = "col-12">
                 <Switch>
                   <Route exact path="/" component={HomePage} />
                   <Route exact path="/gifts" component={GiftList} />
                   <Route path="/myWishes" component={MyWishes} />
                 </Switch>
-              </div>
-              <div className = "d-none d-sm-block col-sm-1">
               </div>
             </div>
           </div>

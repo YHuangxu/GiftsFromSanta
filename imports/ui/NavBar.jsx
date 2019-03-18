@@ -20,7 +20,7 @@ export default class NavBar extends Component {
     );
     
     const guestPage = (
-      <ul className="navbar-nav">
+      <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <NavLink className="nav-link" activeClassName="active" to="/">Home</NavLink>
         </li>
@@ -33,8 +33,8 @@ export default class NavBar extends Component {
 
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand">
+        <nav className="navbar bg-danger">
+          <a className="navbar-brand nav-link" activeClassName="active" to="/">
             Gifts from Santa
           </a>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,6 @@ export default class NavBar extends Component {
             {Meteor.userId()? userPage : guestPage}
             <AccountsUIWrapper />
           </div>
-
         </nav>
       </div>
     );

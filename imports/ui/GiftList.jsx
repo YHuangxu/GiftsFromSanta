@@ -114,15 +114,15 @@ class GiftList extends Component {
         </div>
         <div className="row">
           {this.props.gifts.map(gift => (
-            <div key={gift._id} className="card col-xs-6 col-s-3">
+            <div key={gift._id} className="card text-dark col-xs-6 col-s-3">
               <div className = "container">
-                <div className="card-top text-right count"><img src = "https://cdn2.iconfinder.com/data/icons/picons-essentials/71/gift-512.png" width = "30px"/>{gift.amount}</div>
-                <div className ="container img-box"><img className="card-img-top" src={gift.url} alt={gift.name}/></div>
+                <div className="card-top text-right text-dark count"><img src = "https://cdn2.iconfinder.com/data/icons/picons-essentials/71/gift-512.png" width = "30px"/>{gift.amount}</div>
+                <div className ="container img-box"><img className="card-img-top img-rounded" src={gift.url} alt={gift.name}/></div>
                 <div className="card-body">
                   <h5 className = "card-text text-center">{gift.name}</h5>
                   <div id = "{{#if selected(gift._id)}} itemSelected {{/if}}">
-                    <button type="button" className="btn btn-success" id="addItem" name={gift._id} onClick = {this.onClick.bind(this)}>I want it!</button>
-                    <button type="button" className="btn btn-warning" id="removeItem" name={gift._id} onClick = {this.onClick.bind(this)}>Remove</button>
+                    <button type="button" className="btn btn-light" id="addItem" name={gift._id} onClick = {this.onClick.bind(this)}>I want it!</button>
+                    <button type="button" className="btn btn-light" id="removeItem" name={gift._id} onClick = {this.onClick.bind(this)}>Remove</button>
                   </div>
                 </div>
               </div>

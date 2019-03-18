@@ -1,34 +1,45 @@
 body {
   padding: 10px;
   font-family: sans-serif;
+  background-image: url();
+  background-repeat: repeat;
+  opacity: 20%;
 }
+
 .card-img-top {
-  max-height: 250px;
   max-width: 250px;
+  max-height: 240px;
+  overflow: hidden;
 }
 
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
+  opacity: 0.9;
   margin: 10px;
   overflow: hidden;
+  transition: 0.3s;
+  width :280px;
+  height:390px;
 }
 
 .card:hover {
   transform: scale(1.02);
 }
 
-.card-text {
+.card-body {
+  background-color: ;
+
 
 }
 
 .img-box {
-  width: 250px;
-  height: 250px;
+  background-color: white;
+  width: 240px;
+  height: 240px;
+  overflow: hidden;
 }
 .card .container {
   padding: 5%;
-
 }
 
 .card .count {
@@ -41,10 +52,17 @@ body {
     display:inline-block;
 }
 
-.myWishList img {
-max-height: 150px;
-max-width: 150px;
+.myWishList img{
+  max-height: 150px;
+  max-width: 150px;
+  overflow: hidden;
 }
+.myWishList .img-container {
+  height: 150px;
+  width: 150px;
+  overflow: hidden;
+}
+
 /*#addItem {
     display:block;
 }*/
