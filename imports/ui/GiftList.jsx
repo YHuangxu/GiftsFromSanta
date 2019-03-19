@@ -3,6 +3,8 @@ import { Meteor } from "meteor/meteor";
 import { Gifts } from "../api/gifts.js";
 import { withTracker } from "meteor/react-meteor-data";
 import PropTypes from "prop-types";
+import Pagination from "./Pagination";
+import { paginate } from "../utils/paginate";
 
 class GiftList extends Component {
   constructor(props) {
@@ -10,10 +12,19 @@ class GiftList extends Component {
     this.state = {
       newName: "",
       newUrl: "",
-      selected:[""]
+      selected:[""],
+      pageSize: 6,
+      currentPage: 1,
+      search: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
+  }
+
+  handlePageChange(page) {
+    this.setState({ currentPage: page });
   }
 
   onChange(e){
@@ -92,25 +103,68 @@ class GiftList extends Component {
     return false;
   }
 
+  updateSearch(event) {
+    this.setState({ search: event.target.value.substring(0, 20) });
+    console.log(event.target.value);
+  }
+
   render() {
+    const {
+      currentPage,
+      pageSize,
+      search
+    } = this.state;
+    let filteredGifts = this.props.gifts;
+    if (search !== "") {
+      filteredGifts = this.props.gifts.filter( gifts => {
+        return (
+          gifts.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+        );
+      });
+    }
+
+    const paginatedGifts = paginate(filteredGifts, currentPage, pageSize);
     return (
       <div className = "container">
         <div className="row">
-          <form id="newItemForm">
-            <div className = "form-group">
-              <label>name</label>
-              <input type="text" className="form-control" id="newName" onChange= {this.onChange.bind(this)}/>
-            </div>
-            <div className = "form-group">
-              <label>url</label>
-              <input type="text" className="form-control" id="newUrl" onChange= {this.onChange.bind(this)}/>
-            </div>
-            <button type="button" className="btn btn-danger" data-target = "#newItemForm" onClick = {this.onSubmit.bind(this)}>Add New</button>
+          <form className="form-inline col-4">
+            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={this.state.search}
+              onChange={this.updateSearch}></input>
+            <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
           </form>
+          <button type="button" className="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal" data-target="#myModal">Add New</button>
+
+          <div id="myModal" className="modal fade" role="dialog">
+            <div className="modal-dialog">
+
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h4 className="modal-title">What Gift Do You Want?</h4>
+                  <button type="button" className="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div className="modal-body">
+                  <form id="newItemForm">
+                    <div className = "form-group">
+                      <label>Gift Name</label>
+                      <input type="text" className="form-control" id="newName" onChange= {this.onChange.bind(this)}/>
+                    </div>
+                    <div className = "form-group">
+                      <label>Link</label>
+                      <input type="text" className="form-control" id="newUrl" onChange= {this.onChange.bind(this)}/>
+                    </div>
+                  </form>
+                </div>
+                <div className="modal-footer d-flex justify-content-center">
+                  <button className="btn btn-danger" data-dismiss="modal" onClick={this.onSubmit}>Submit</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
         <div className="row">
-          {this.props.gifts.map(gift => (
-            <div key={gift._id} className="card text-light col-xs-6 col-s-3">
+          {paginatedGifts.map(gift => (
+            <div key={gift._id} className="card col-xs-6 col-s-3">
               <div className = "container">
                 <div className="card-top text-right text-light count"><img src = "https://cdn2.iconfinder.com/data/icons/picons-essentials/71/gift-512.png" width ="30px"/>{gift.amount}</div>
                 <div className ="container img-box"><img className="card-img-top img-rounded" src={gift.url} alt={gift.name}/></div>
@@ -125,6 +179,12 @@ class GiftList extends Component {
             </div>
           ))}
         </div>
+        <Pagination
+          itemsCount={filteredGifts.length}
+          pageSize={this.state.pageSize}
+          onPageChange={this.handlePageChange}
+          currentPage={this.state.currentPage}
+        />
       </div>
     );
   }
