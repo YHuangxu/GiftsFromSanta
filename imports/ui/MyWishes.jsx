@@ -99,7 +99,6 @@ export default withTracker(() => {
       sort: {createdAt: -1}}).fetch(),
     gifts: Gifts.find({}).fetch(),
     user: Meteor.user(),
-    ready : handle2.ready() && handle.ready(),
-    size: this.props.wishes.length
+    ready : handle2.ready() && handle.ready()
   };
 })(MyWishes);
