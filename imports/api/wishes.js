@@ -13,7 +13,22 @@ if (Meteor.isServer) {
       }
     });
   });
+
+  Meteor.publish("myWishes", function f() {
+    if (!Meteor.userId()) {
+      return this.ready();
+    }
+    return Wishes.find({}, {
+      userId: Meteor.userId(),
+      sort: {
+        createdAt: -1
+      }
+    });
+  });
 }
+
+
+
 
 Meteor.methods({
   "wishes.insert"(info) {

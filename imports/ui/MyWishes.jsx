@@ -16,8 +16,8 @@ class MyWishes extends Component {
 
   getGiftList() {
     let list = [];
-    for (var i ; i < this.props.wishes.length; i++) {
-      list.push(this.getGift(this.props.wishes[i].giftId));
+    for (var i ; i < this.props.myWishes.length; i++) {
+      list.push(this.getGift(this.props.myWishes[i].giftId));
     }
   }
 
@@ -62,7 +62,7 @@ class MyWishes extends Component {
     return (
       <div className = "container">
         <div className="row">
-          {this.props.wishes.map(wish => (
+          {this.props.myWishes.map(wish => (
             <div key={wish._id} className = "container myWishList">
               <div className="row">
                 <div className ="col-3 img-container">
@@ -84,19 +84,23 @@ class MyWishes extends Component {
 }
 
 MyWishes.propTypes = {
-  wishes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  myWishes: PropTypes.arrayOf(PropTypes.object).isRequired,
   gifts: PropTypes.arrayOf(PropTypes.object).isRequired,
   ready: PropTypes.bool.isRequired
 };
 
 export default withTracker(() => {
   const handle2 = Meteor.subscribe("gifts");
-  const handle = Meteor.subscribe("wishes");
+  const handle = Meteor.subscribe("myWishes");
   
   return {
-    wishes: Wishes.find({},{
-      userId: Meteor.userId(), 
-      sort: {createdAt: -1}}).fetch(),
+    myWishes: Wishes.find({
+      userId: Meteor.userId()
+    },{
+      sort:{
+        createdAt: -1
+      }
+    }).fetch(),
     gifts: Gifts.find({}).fetch(),
     user: Meteor.user(),
     ready : handle2.ready() && handle.ready()
