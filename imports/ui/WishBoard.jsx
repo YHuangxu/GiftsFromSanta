@@ -52,7 +52,7 @@ class WishBoard extends Component {
               <label>//WishBoard//for development ONLY, addGiftId</label>
               <input type="text" className="form-control" id="newGiftId" onChange= {this.onChange.bind(this)}/>
             </div>
-            <button type="button" className="btn btn-danger" data-target = "#newWishForm" onClick = {this.onSubmit.bind(this)}>Add Wish</button>
+            <button type="button" className="btn btn-outline-danger my-2 my-sm-0" data-target = "#newWishForm" onClick = {this.onSubmit.bind(this)}>Add Wish</button>
           </form>
         </div>
         <div className="row">

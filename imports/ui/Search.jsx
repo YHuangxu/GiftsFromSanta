@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+/*import React, { Component } from "react";
 import "./style/App.css";
 import Jumbo from "./Jumbotron.js";
 import Post from "./Post.js";
@@ -74,4 +74,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App;*/

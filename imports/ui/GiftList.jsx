@@ -3,6 +3,8 @@ import { Meteor } from "meteor/meteor";
 import { Gifts } from "../api/gifts.js";
 import { withTracker } from "meteor/react-meteor-data";
 import PropTypes from "prop-types";
+import Pagination from "./Pagination";
+import { paginate } from "../utils/paginate";
 
 class GiftList extends Component {
   constructor(props) {
@@ -10,10 +12,17 @@ class GiftList extends Component {
     this.state = {
       newName: "",
       newUrl: "",
-      selected:[""]
+      selected:[""],
+      pageSize: 6,
+      currentPage: 1
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
+  }
+
+  handlePageChange(page) {
+    this.setState({ currentPage: page });
   }
 
   onChange(e){
@@ -94,23 +103,50 @@ class GiftList extends Component {
 
 
   render() {
+    const {
+      currentPage,
+      pageSize
+    } = this.state;
+    const paginatedGifts = paginate(this.props.gifts, currentPage, pageSize);
     return (
       <div className = "container">
-        <div className="row">
-          <form id="newItemForm">
+      <div className="row">
+      <form className="form-inline col-4">
+    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+    <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
+  </form>
+<button type="button" className="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal" data-target="#myModal">Add New</button>
+
+<div id="myModal" className="modal fade" role="dialog">
+  <div className="modal-dialog">
+
+    <div className="modal-content">
+      <div className="modal-header">
+      <h4 className="modal-title">What Gift Do You Want?</h4>
+        <button type="button" className="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div className="modal-body">
+        <form id="newItemForm">
             <div className = "form-group">
-              <label>name</label>
+              <label>Gift Name</label>
               <input type="text" className="form-control" id="newName" onChange= {this.onChange.bind(this)}/>
             </div>
             <div className = "form-group">
-              <label>url</label>
+              <label>Link</label>
               <input type="text" className="form-control" id="newUrl" onChange= {this.onChange.bind(this)}/>
             </div>
-            <button type="button" className="btn btn-danger" data-target = "#newItemForm" onClick = {this.onSubmit.bind(this)}>Add New</button>
           </form>
-        </div>
+      </div>
+      <div className="modal-footer d-flex justify-content-center">
+        <button className="btn btn-danger" data-dismiss="modal" onClick={this.onSubmit}>Submit</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+      </div>
         <div className="row">
-          {this.props.gifts.map(gift => (
+          {paginatedGifts.map(gift => (
             <div key={gift._id} className="card col-xs-6 col-s-3">
               <div className = "container">
                 <div className="card-top text-right count"><img src = "https://cdn2.iconfinder.com/data/icons/picons-essentials/71/gift-512.png" width = "30px"/>{gift.amount}</div>
@@ -126,6 +162,12 @@ class GiftList extends Component {
             </div>
           ))}
         </div>
+        <Pagination
+              itemsCount={this.props.gifts.length}
+              pageSize={this.state.pageSize}
+              onPageChange={this.handlePageChange}
+              currentPage={this.state.currentPage}
+            />
       </div>
     );
   }

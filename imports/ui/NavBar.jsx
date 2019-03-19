@@ -20,7 +20,7 @@ export default class NavBar extends Component {
     );
     
     const guestPage = (
-      <ul className="navbar-nav">
+      <ul className="navbar-nav ml-auto">
         <li className="nav-item">
           <NavLink className="nav-link" activeClassName="active" to="/">Home</NavLink>
         </li>
@@ -32,7 +32,7 @@ export default class NavBar extends Component {
 
 
     return (
-      <div>
+      <div className="container" style={{fontFamily:"Gloria Hallelujah", marginBottom:30}}>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
           <a className="navbar-brand">
             Gifts from Santa
