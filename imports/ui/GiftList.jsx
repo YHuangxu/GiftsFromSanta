@@ -14,11 +14,13 @@ class GiftList extends Component {
       newUrl: "",
       selected:[""],
       pageSize: 6,
-      currentPage: 1
+      currentPage: 1,
+      search: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
   }
 
   handlePageChange(page) {
@@ -100,19 +102,35 @@ class GiftList extends Component {
     return false;
   }
 
+  updateSearch(event) {
+    this.setState({ search: event.target.value.substring(0, 20) });
+    console.log(event.target.value);
+  }
+
 
 
   render() {
     const {
       currentPage,
-      pageSize
+      pageSize,
+      search
     } = this.state;
-    const paginatedGifts = paginate(this.props.gifts, currentPage, pageSize);
+    let filteredGifts = this.props.gifts;
+        if (search !== "") {
+      filteredGifts = this.props.gifts.filter( gifts => {
+      return (
+        gifts.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+      );
+    });
+    }
+
+    const paginatedGifts = paginate(filteredGifts, currentPage, pageSize);
     return (
       <div className = "container">
       <div className="row">
       <form className="form-inline col-4">
-    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={this.state.search}
+              onChange={this.updateSearch}></input>
     <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
   </form>
 <button type="button" className="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal" data-target="#myModal">Add New</button>
@@ -163,7 +181,7 @@ class GiftList extends Component {
           ))}
         </div>
         <Pagination
-              itemsCount={this.props.gifts.length}
+              itemsCount={filteredGifts.length}
               pageSize={this.state.pageSize}
               onPageChange={this.handlePageChange}
               currentPage={this.state.currentPage}
