@@ -23,9 +23,6 @@ class WishBoard extends Component {
   }
 
   render() {
-    if (!this.props.ready) {
-      return <div>loading</div>;
-    }
     return (
       <div className = "container">
         <div className="row">
@@ -33,7 +30,7 @@ class WishBoard extends Component {
             {this.props.wishes.map(wish => (
               <div key={wish._id} className="col-12">
                 <div className = "container" >
-                  <h5>{wish.username} asked for a <span id="giftName">{this.getGiftName(wish.giftId)}</span></h5>
+                  <h5 className="topWish"><span id="gender">👧🏻👦🏻</span> <span>{wish.username}</span> asked for a <span id="giftName">{this.getGiftName(wish.giftId)} </span><span>🎅🏻</span></h5>
                 </div>
               </div>
             ))}
@@ -56,7 +53,7 @@ export default withTracker(() => {
 
   return {
     wishes: Wishes.find({},{
-      limit: 10,
+      limit: 1,
       sort: {
         createdAt: -1
       }

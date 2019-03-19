@@ -13,23 +13,16 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <div id="header">
-            <NavBar />
-          </div>
-          <div>
-            <WishBoard />
-          </div>
-          
-          <div className = "container">
-            <div className = "row">
-              <div className = "col-12">
-                <Switch>
-                  <Route exact path="/" component={HomePage} />
-                  <Route exact path="/gifts" component={GiftList} />
-                  <Route path="/myWishes" component={MyWishes} />
-                </Switch>
-              </div>
+        <NavBar />
+        {Meteor.userId()? <WishBoard />: null}
+        <div className = "container">
+          <div className = "row">
+            <div className = "col-12">
+              <Switch>
+                <Route exact path="/" component={HomePage} />
+                {Meteor.userId()? <Route exact path="/gifts" component={GiftList} />: null}
+                <Route path="/myWishes" component={MyWishes} />
+              </Switch>
             </div>
           </div>
           <Footer />

@@ -1,9 +1,39 @@
 body {
-  padding: 10px;
-  font-family: sans-serif;
+  padding:1%;
+  font-family: "Snowburst One", cursive;
   background-image: url(http://ridgewoodparkchurch.org/new/wp-content/uploads/2010/12/snowflakes.gif);
   background-repeat: repeat;
   opacity: 20%;
+}
+/*#HomePage{
+  background-image: url(https://cdn.wallpapersafari.com/28/57/HXW5tv.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}*/
+.full-bg-img {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.navbar-container {
+  font-family: "Mountains of Christmas", cursive;
+  background-color: transparent;
+  color: white;
+}
+
+.nav-link, .login-link-text {
+  text-align: right;
+  font-family: "Mountains of Christmas", cursive;
+  color: white;
+  font-size: 1.8rem;
+}
+
+#navbar-brand-title {
+  font-family: "Mountains of Christmas", cursive;
+  font-weight: bold;
+  color: white;
+  font-size: 4rem;
 }
 
 .card-img-top {
@@ -14,11 +44,10 @@ body {
 }
 
 .card {
-  background: rgba(0,0,0,0.2);
-  background-color: white; opacity: 0.7;
+  background-image: url(https://i.pinimg.com/originals/f5/28/12/f528128832b3f4cce59e6173cd34f652.jpg);
+  background-size: cover;
   background-repeat: repeat;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  opacity: 1;
   margin: 10px;
   overflow: hidden;
   transition: 0.3s;
@@ -72,6 +101,10 @@ body {
   overflow: hidden;
 }
 
+.topWish {
+  color: white;
+}
+
 /*#addItem {
     display:block;
 }*/
@@ -84,3 +117,16 @@ body {
 #itemSelected #removeItem{
     display:block;
 }*/
+
+
+
+.footer {
+  font-family: "Snowburst One", cursive;
+  border-top: 1px solid #E7E7E7;
+  margin-top: 50px;
+  padding: 20px;
+  width: aut;
+  left: 0;
+  bottom: 0;
+  height: 80px;
+}
