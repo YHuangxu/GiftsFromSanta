@@ -20,7 +20,7 @@ export default class NavBar extends Component {
           <NavLink className="nav-link" activeClassName="active" to="/myWishes">My Wishes{this.state.size}</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" activeClassName="active" to="/About">My Profile</NavLink>
+          <NavLink className="nav-link" activeClassName="active" to="/Profile">My Profile</NavLink>
         </li>
       </ul>
     );
