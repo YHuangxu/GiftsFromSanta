@@ -10,12 +10,14 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }*/
-.full-bg-img {
+
+/*.full-bg-img {
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
+}*/
+
 .navbar-container {
   font-family: "Mountains of Christmas", cursive;
   background-color: transparent;
@@ -36,44 +38,45 @@ body {
   font-size: 4rem;
 }
 
-.card-img-top {
-  padding:2%;
-  max-width: 220px;
-  max-height: 250px;
-  overflow: hidden;
-}
-
 .card {
   background-image: url(https://i.pinimg.com/originals/f5/28/12/f528128832b3f4cce59e6173cd34f652.jpg);
   background-size: cover;
+  font-family: "Emilys Candy", cursive;
   background-repeat: repeat;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  margin: 10px;
+  margin: 1%;
+  padding: 2px;
   overflow: hidden;
   transition: 0.3s;
-  width :280px;
-  height:390px;
+  width : 240px;
+  height: 355px;
 }
-
+/*
 #card-selected{
   background-blend-mode: multiply;
-}
+}*/
 
 .card:hover {
   transform: scale(1.02);
 }
 
 .card-body {
-  background-color: ;
-
-
+  padding: 0.5rem !important;
+}
+.card-img-top {
+  padding:2%;
+  max-width: 240px;
+  max-height: 220px;
+  overflow: hidden;
 }
 
 .img-box {
+  margin:3px;
+  padding:5px;
   background-color: white;
   opacity: 0.95;
-  width: 220px;
-  height: 250px;
+  width: 240px;
+  height: 220px;
   overflow: hidden;
 }
 .card .container {
@@ -83,11 +86,19 @@ body {
 .card .count {
   font-family: sans-serif;
 }
+
+button{
+    position: relative; 
+    left: 30%;
+    padding: 1% !important;
+    font-size: auto;
+}
+
 #addItem {
-    display:inline-block;
+    display:block;
 }
 #removeItem {
-    display:inline-block;
+    display:block;
 }
 
 .myWishList img{
@@ -105,12 +116,12 @@ body {
   color: white;
 }
 
-#addItem {
-    display:block;
-}
-#removeItem {
-    display:block;
-}
+/*.giftButtons{ 
+  display: flex; 
+  justify-content: center; 
+}*/
+
+
 
 .page-link {
   color: black !important;
@@ -124,7 +135,7 @@ body {
   border-top: 1px solid #E7E7E7;
   margin-top: 50px;
   padding: 20px;
-  width: aut;
+  width: auto;
   left: 0;
   bottom: 0;
   height: 80px;

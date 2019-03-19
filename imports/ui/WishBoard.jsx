@@ -22,15 +22,20 @@ class WishBoard extends Component {
     }
   }
 
+  isGirl(){
+    return true;
+  }
+
   render() {
     return (
       <div className = "container">
         <div className="row">
-          <div className="row">
+          <div className="row ml-auto">
             {this.props.wishes.map(wish => (
-              <div key={wish._id} className="col-12">
+              <div key={wish._id} className="col-12 ">
                 <div className = "container" >
-                  <h5 className="topWish"><span id="gender">👧🏻👦🏻</span> <span>{wish.username}</span> asked for a <span id="giftName">{this.getGiftName(wish.giftId)} </span><span>🎅🏻</span></h5>
+                  <h5 className="topWish badge badge-pill badge-light" style={{fontFamily:"Indie Flower", fontSize:"1.7rem"}}>
+                    <span id="gender">{this.isGirl()?"👧🏻":"👦🏻"}</span> <span>{wish.username}</span> asked for a <span id="giftName">{this.getGiftName(wish.giftId)} !</span></h5><span style={{marginRight: 60}}></span>
                 </div>
               </div>
             ))}

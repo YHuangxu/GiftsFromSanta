@@ -14,13 +14,13 @@ export default class NavBar extends Component {
     const userPage = (
       <ul className="navbar-nav ml-auto navbar-expand-lg ">
         <li className="nav-item">
-          <NavLink className="nav-link" activeClassName="active" to="/gifts">Pick Gifts</NavLink>
+          <NavLink className="nav-link" activeClassName="active" to="/gifts">PickGifts</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" activeClassName="active" to="/myWishes">My Wishes{this.state.size}</NavLink>
+          <NavLink className="nav-link" activeClassName="active" to="/myWishes">MyWishes{this.state.size}</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" activeClassName="active" to="/Profile">My Profile</NavLink>
+          <NavLink className="nav-link" activeClassName="active" to="/Profile">Profile</NavLink>
         </li>
       </ul>
     );
@@ -37,7 +37,7 @@ export default class NavBar extends Component {
       <div className="container navbar-container">
         <nav className="navbar navbar-expand-lg ml-auto">
           <div className="navbar-brand" >
-            <a href="/" id="navbar-brand-title">Gifts from Santa</a>
+            <a href="/" id="navbar-brand-title"><span>🎅🏻</span> Santa's Elf Factory</a>
           </div>
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

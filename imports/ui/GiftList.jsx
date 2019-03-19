@@ -13,7 +13,7 @@ class GiftList extends Component {
       newName: "",
       newUrl: "",
       selected:[""],
-      pageSize: 6,
+      pageSize: 12,
       currentPage: 1,
       search: ""
     };
@@ -130,9 +130,11 @@ class GiftList extends Component {
           <form className="form-inline col-4">
             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={this.state.search}
               onChange={this.updateSearch}></input>
+
             <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
           </form>
-          <button type="button" className="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal" data-target="#myModal">Add New</button>
+          {filteredGifts.length === 0? 
+            <button type="button" className="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal" data-target="#myModal">Add New</button> : null}
 
           <div id="myModal" className="modal fade" role="dialog">
             <div className="modal-dialog">
@@ -166,17 +168,12 @@ class GiftList extends Component {
           {paginatedGifts.map(gift => (
             <div key={gift._id} className="card col-xs-6 col-s-3">
               <div className = "container">
-                <div className="card-top text-right text-light count"><img src = "https://cdn2.iconfinder.com/data/icons/picons-essentials/71/gift-512.png" width ="28px"/>{gift.amount}</div>
+                <div className="card-top text-right text-dark count"><img src = "https://cdn2.iconfinder.com/data/icons/picons-essentials/71/gift-512.png" width ="25px"/>{gift.amount}</div>
                 <div className ="container img-box"><img className="card-img-top img-rounded" src={gift.url} alt={gift.name}/></div>
                 <div className="card-body">
                   <h5 className = "card-text text-center">{gift.name}</h5>
-                  {this.selected(gift._id) ? 
-                    <div>
-                      <button type="button" className="btn btn-light" id="removeItem" name={gift._id} onClick = {this.onClick.bind(this)}>Remove</button>
-                    </div> : 
-                    <div>
-                      <button type="button" className="btn btn-light" id="addItem" name={gift._id} onClick = {this.onClick.bind(this)}>I want it!</button>
-                    </div>
+                  {this.selected(gift._id) ? <button type="button" className="btn btn-outline-light" id="removeItem" name={gift._id} onClick = {this.onClick.bind(this)}>Remove</button>
+                    :  <button type="button" className="btn btn-outline-dark" id="addItem" name={gift._id} onClick = {this.onClick.bind(this)}>I want it!</button>
                   }
                 </div>
               </div>
