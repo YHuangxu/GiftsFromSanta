@@ -27,9 +27,6 @@ if (Meteor.isServer) {
   });
 }
 
-
-
-
 Meteor.methods({
   "wishes.insert"(info) {
     check(info.userId, String);

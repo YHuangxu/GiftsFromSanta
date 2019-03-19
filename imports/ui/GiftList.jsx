@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Meteor } from "meteor/meteor";
 import { Gifts } from "../api/gifts.js";
+import { Wishes } from "../api/wishes.js";
 import { withTracker } from "meteor/react-meteor-data";
 import PropTypes from "prop-types";
 import Pagination from "./Pagination";
@@ -12,7 +13,6 @@ class GiftList extends Component {
     this.state = {
       newName: "",
       newUrl: "",
-      selected:[""],
       pageSize: 12,
       currentPage: 1,
       search: ""
@@ -72,31 +72,11 @@ class GiftList extends Component {
       }
       console.log("succeed",res);
     });
-
-    if (evt.target.id === "addItem") {
-      var newSelected = [].concat(this.state.selected);
-      newSelected.push(evt.target.name);
-      this.setState({
-        selected: newSelected
-      });
-    }
-
-    if (evt.target.id === "removeItem"){
-      let newSelected = [].concat(this.state.selected);
-      for (var i = 0; i < newSelected.length; i++) {
-        if (newSelected[i] === evt.target.name) {
-          newSelected.splice(i, 1);
-        }
-      }
-      this.setState({
-        selected: newSelected
-      });
-    }
   }
 
   selected(giftId) {
-    for (var i = 0; i < this.state.selected.length; i++) {
-      if (this.state.selected[i] === giftId) {
+    for (var i = 0; i < this.props.myWishes.length; i++) {
+      if (this.props.myWishes[i].giftId == giftId) {
         return true;
       }
     }
@@ -172,7 +152,7 @@ class GiftList extends Component {
                 <div className ="container img-box"><img className="card-img-top img-rounded" src={gift.url} alt={gift.name}/></div>
                 <div className="card-body">
                   <h5 className = "card-text text-center">{gift.name}</h5>
-                  {this.selected(gift._id) ? <button type="button" className="btn btn-outline-light" id="removeItem" name={gift._id} onClick = {this.onClick.bind(this)}>Remove</button>
+                  {this.selected(gift._id) ? <button type="button" className="btn btn-outline-secondary" id="removeItem" name={gift._id} onClick = {this.onClick.bind(this)}>Remove</button>
                     :  <button type="button" className="btn btn-outline-dark" id="addItem" name={gift._id} onClick = {this.onClick.bind(this)}>I want it!</button>
                   }
                 </div>
@@ -192,18 +172,23 @@ class GiftList extends Component {
 }
 
 GiftList.propTypes = {
-  gifts: PropTypes.arrayOf(PropTypes.object).isRequired
+  myWishes: PropTypes.arrayOf(PropTypes.object).isRequired,
+  gifts: PropTypes.arrayOf(PropTypes.object).isRequired,
+  ready: PropTypes.bool.isRequired
 };
 
 export default withTracker(() => {
-  const handle = Meteor.subscribe("gifts");
+  const handle2 = Meteor.subscribe("gifts");
+  const handle = Meteor.subscribe("myWishes");
+  
   return {
     gifts: Gifts.find({}, {
       sort: {
         amount: -1
       }
     }).fetch(),
+    myWishes: Wishes.find({userId: Meteor.userId()}).fetch(),  
     user: Meteor.user(),
-    ready : handle.ready()
+    ready : handle.ready() && handle2.ready()
   };
 })(GiftList);
