@@ -1,6 +1,7 @@
 import { Meteor } from "meteor/meteor";
 import { Mongo } from "meteor/mongo";
 import { check } from "meteor/check";
+import { Gifts } from "../api/gifts.js";
 
 export const Wishes = new Mongo.Collection("wishes");
 

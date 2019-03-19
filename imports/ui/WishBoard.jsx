@@ -14,13 +14,46 @@ class WishBoard extends Component {
     };
   }
   
+
+  // UNSAFE_componentWillReceiveProps(nextProps) {
+  //   if(parseInt(nextProps, 10)!== parseInt(this.props,10)) {
+  //     this.setState({postsLoaded:false});
+  //     this.contentLoaded=0;
+  //   }
+  // }
+
+  // getUser(userId) {
+  //   Meteor.call("user.getOne", userId, (err, res) => {
+  //     if (err) {
+  //       alert("There was error updating check the console");
+  //       console.log(err);
+  //     }
+  //     console.log("succeed",res);
+  //   });
+  // }
+
   getGiftName(giftId) {
+    // Meteor.call("gift.getOne", giftId, (err, res) => {
+    //   if (err) {
+    //     alert("There was error updating check the console");
+    //     console.log(err);
+    //   }
+    //   console.log("succeed",res);
+    // });
     for (var i = 0; i < this.props.gifts.length; i++) {
       if (this.props.gifts[i]._id === giftId) {
         return this.props.gifts[i].name;
       }
     }
   }
+
+  // getUserName(userId) {
+  //   Meteor.users.find({
+  //     _id: userId
+  //   }).fetch().map((u) =>{
+  //     return u.username;
+  //   });
+  // }
 
   render() {
     if (!this.props.ready) {

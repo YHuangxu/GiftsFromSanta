@@ -30,6 +30,7 @@ export default class NavBar extends Component {
       </ul>
     );
 
+
     return (
       <div>
         <nav className="navbar bg-danger">
