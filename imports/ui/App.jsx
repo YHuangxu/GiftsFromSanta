@@ -10,8 +10,6 @@ import { withTracker } from "meteor/react-meteor-data";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 class App extends Component {
-  // <div className = "d-none d-sm-block col-sm-1">
-  //             </div>
   render() {
     return (
       <Router>

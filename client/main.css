@@ -1,7 +1,7 @@
 body {
   padding: 10px;
   font-family: sans-serif;
-  background-image: url();
+  background-image: url(http://ridgewoodparkchurch.org/new/wp-content/uploads/2010/12/snowflakes.gif);
   background-repeat: repeat;
   opacity: 20%;
 }
@@ -14,15 +14,20 @@ body {
 }
 
 .card {
-  background-image: url(http://ridgewoodparkchurch.org/new/wp-content/uploads/2010/12/snowflakes.gif);
+  background: rgba(0,0,0,0.2);
+  background-color: white; opacity: 0.7;
   background-repeat: repeat;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  opacity: 0.9;
+  opacity: 1;
   margin: 10px;
   overflow: hidden;
   transition: 0.3s;
   width :280px;
   height:390px;
+}
+
+#card-selected{
+  background-blend-mode: multiply;
 }
 
 .card:hover {
