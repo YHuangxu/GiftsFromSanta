@@ -105,18 +105,13 @@ body {
   color: white;
 }
 
-/*#addItem {
+#addItem {
     display:block;
-}*/
-/*#removeItem {
-    display:none;
-}*/
-/*#itemSelected #addItem{
-    display:none;
 }
-#itemSelected #removeItem{
+#removeItem {
     display:block;
-}*/
+}
+
 
 
 

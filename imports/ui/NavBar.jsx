@@ -9,13 +9,6 @@ export default class NavBar extends Component {
     this.state = {
     };
   }
-  // getSize(){
-  //   let count = 0;
-  //   wishes.map(wish =>{
-  //     count++;
-  //   });
-  //   return count;
-  // }
   
   render() {
     const userPage = (
