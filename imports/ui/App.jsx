@@ -7,6 +7,7 @@ import Footer from "./Footer.jsx";
 import MyWishes from "./MyWishes.jsx";
 import WishBoard from "./WishBoard.jsx";
 import Profile from "./Profile.jsx";
+import About from "./About.jsx";
 import { withTracker } from "meteor/react-meteor-data";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
@@ -21,9 +22,10 @@ class App extends Component {
             <div className = "col-12">
               <Switch>
                 <Route exact path="/" component={HomePage} />
-                {Meteor.userId()? <Route exact path="/gifts" component={GiftList} />: null}
-                <Route path="/myWishes" component={MyWishes} />
-                <Route path="/Profile" component={Profile} />
+                <Route exact path="/gifts" component={GiftList} />
+                <Route exact path="/myWishes" component={MyWishes} />
+                <Route exact path="/Profile" component={Profile} />
+                <Route exact path="/About" component={About} />
               </Switch>
             </div>
           </div>

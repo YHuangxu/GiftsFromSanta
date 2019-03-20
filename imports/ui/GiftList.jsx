@@ -104,21 +104,24 @@ class GiftList extends Component {
     }
 
     const paginatedGifts = paginate(filteredGifts, currentPage, pageSize);
+    const addMode = (
+      <div id="magic-button">
+        <br/>
+        <h4>Sorry we don't have any! Let us know about it:
+          <button type="button" className= "btn btn-danger my-2 my-sm-0 " data-toggle="modal" data-target="#myModal">🌟Magic Button🌟</button>
+        </h4>
+      </div>
+    );
+
     return (
       <div className = "container">
         <div className="row">
           <form className="form-inline col-4">
-            <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" value={this.state.search}
+            <input className="form-control mr-sm-2" type="search" placeholder="🔍 Search..." aria-label="Search" value={this.state.search}
               onChange={this.updateSearch}></input>
-
-            <button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Search</button>
           </form>
-          {filteredGifts.length === 0? 
-            <button type="button" className="btn btn-outline-danger my-2 my-sm-0" data-toggle="modal" data-target="#myModal">Add New</button> : null}
-
           <div id="myModal" className="modal fade" role="dialog">
             <div className="modal-dialog">
-
               <div className="modal-content">
                 <div className="modal-header">
                   <h4 className="modal-title">What Gift Do You Want?</h4>
@@ -127,11 +130,11 @@ class GiftList extends Component {
                 <div className="modal-body">
                   <form id="newItemForm">
                     <div className = "form-group">
-                      <label>Gift Name</label>
+                      <label>Name</label>
                       <input type="text" className="form-control" id="newName" onChange= {this.onChange.bind(this)}/>
                     </div>
                     <div className = "form-group">
-                      <label>Link</label>
+                      <label>Image Url</label>
                       <input type="text" className="form-control" id="newUrl" onChange= {this.onChange.bind(this)}/>
                     </div>
                   </form>
@@ -140,9 +143,11 @@ class GiftList extends Component {
                   <button className="btn btn-danger" data-dismiss="modal" onClick={this.onSubmit}>Submit</button>
                 </div>
               </div>
-
             </div>
           </div>
+        </div>
+        <div className="row">
+          {filteredGifts.length === 0? addMode:null}
         </div>
         <div className="row">
           {paginatedGifts.map(gift => (
@@ -152,7 +157,7 @@ class GiftList extends Component {
                 <div className ="container img-box"><img className="card-img-top img-rounded" src={gift.url} alt={gift.name}/></div>
                 <div className="card-body">
                   <h5 className = "card-text text-center">{gift.name}</h5>
-                  {this.selected(gift._id) ? <button type="button" className="btn btn-outline-secondary" id="removeItem" name={gift._id} onClick = {this.onClick.bind(this)}>Remove</button>
+                  {this.selected(gift._id) ? <button type="button" className="btn btn-outline-light" id="removeItem" name={gift._id} onClick = {this.onClick.bind(this)}>Remove</button>
                     :  <button type="button" className="btn btn-outline-dark" id="addItem" name={gift._id} onClick = {this.onClick.bind(this)}>I want it!</button>
                   }
                 </div>
