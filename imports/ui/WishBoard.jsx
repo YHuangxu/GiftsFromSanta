@@ -35,7 +35,7 @@ class WishBoard extends Component {
               <div key={wish._id} className="col-12 ">
                 <div className = "container" >
                   <h5 className="topWish badge badge-pill badge-light" style={{fontFamily:"Indie Flower", fontSize:"1.7rem"}}>
-                    <span id="gender">{this.isGirl()?"👧🏻":"👦🏻"}</span> <span>{wish.username}</span> asked for a <span id="giftName">{this.getGiftName(wish.giftId)} !</span></h5><span style={{marginRight: 60}}></span>
+                    <span>🎁</span> <span>{wish.username}</span> asked for a <span id="giftName">{this.getGiftName(wish.giftId)} !</span></h5><span style={{marginRight: 60}}></span>
                 </div>
               </div>
             ))}

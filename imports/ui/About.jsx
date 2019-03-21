@@ -23,12 +23,13 @@ export default class About extends Component {
         <div className = "How">
           <h1>❄️How to use❄️</h1><br/>
           <h4>❣️ Sign up a new account </h4>
-          <h4>❣️ Pick Christmas gifts from our inventory </h4>
+          <h4>❣️ Pick Christmas gifts from our inventory.</h4>
+          <h4>❣️ Each gift can only be selected ONCE </h4>
           <ul>
-            <li>Search for the gifts you want</li>
+            <li>Search for the gifts you want </li>
             <li>If no result comes out, a <span>🌟Magic Button🌟</span> will let you add your desired gift</li>
           </ul>
-          <h4>❣️ Update your wishes till Christmas</h4>
+          <h4>❣️ Update your wishes till Christmas </h4>
         </div>
       </div>
     );
