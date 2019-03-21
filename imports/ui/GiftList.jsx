@@ -47,6 +47,9 @@ class GiftList extends Component {
       }
       console.log("succeed",res);
     });
+    this.setState({
+      search:""
+    });
   }
 
   onClick(evt) {
