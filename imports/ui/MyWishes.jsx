@@ -61,23 +61,32 @@ class MyWishes extends Component {
   render() {
     return (
       <div className = "container">
-        <div className="row">
-          {this.props.myWishes.map(wish => (
-            <div key={wish._id} className = "container myWishList">
-              <div className="row">
-                <div className ="col-3 img-container">
-                  <img src={this.getUrl(wish.giftId)} alt={this.getName(wish.giftId)}/>
-                </div>
-                <div className ="col-6">
-                  {this.getName(wish.giftId)}
-                </div>
-                <div className ="col-3">
-                  <button type="button" className="btn btn-warning" id="removeItem" name={wish._id} onClick = {this.onClick.bind(this)}>Remove</button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <table className="table table-light table-striped wishTable">
+              <thead className="table-secondary">
+                <tr>
+                  <th />
+                  <th className="w-20" scope="col">
+                    Gift Image
+                  </th>
+                  <th className="w-40" scope="col">
+                    Gift Name
+                  </th>
+                  <th className="w-10" scope="col" />
+                </tr>
+              </thead>
+              <tbody>
+                {this.props.myWishes.map(wish => (
+                  <tr key={wish._id} className="myWishList">
+                    <th scope="row" />
+                    <td ><img className="img-container" src={this.getUrl(wish.giftId)} alt={this.getName(wish.giftId)}/></td>
+                    <td>{this.getName(wish.giftId)}</td>
+                    <td>
+                      <button type="button" className="btn btn-warning" id="removeItem" name={wish._id} onClick = {this.onClick.bind(this)}>Remove</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
       </div>
     );
   }

@@ -139,6 +139,10 @@ button{
   overflow: hidden;
 }
 
+.wishTable {
+  margin-top: 60px;
+}
+
 .topWish {
   color: white;
 }
