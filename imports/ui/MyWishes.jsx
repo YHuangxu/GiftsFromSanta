@@ -62,31 +62,31 @@ class MyWishes extends Component {
     return (
       <div className = "container">
         <table className="table table-light table-striped wishTable">
-              <thead className="table-secondary">
-                <tr>
-                  <th />
-                  <th className="w-20" scope="col">
-                    Gift Image
-                  </th>
-                  <th className="w-40" scope="col">
-                    Gift Name
-                  </th>
-                  <th className="w-10" scope="col" />
-                </tr>
-              </thead>
-              <tbody>
-                {this.props.myWishes.map(wish => (
-                  <tr key={wish._id} className="myWishList">
-                    <th scope="row" />
-                    <td ><img className="img-container" src={this.getUrl(wish.giftId)} alt={this.getName(wish.giftId)}/></td>
-                    <td>{this.getName(wish.giftId)}</td>
-                    <td>
-                      <button type="button" className="btn btn-warning" id="removeItem" name={wish._id} onClick = {this.onClick.bind(this)}>Remove</button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <thead className="table-secondary">
+            <tr>
+              <th />
+              <th className="w-20" scope="col">
+                Gift Image
+              </th>
+              <th className="w-40" scope="col">
+                Gift Name
+              </th>
+              <th className="w-10" scope="col" />
+            </tr>
+          </thead>
+          <tbody>
+            {this.props.myWishes.map(wish => (
+              <tr key={wish._id} className="myWishList">
+                <th scope="row" />
+                <td ><img className="img-container" src={this.getUrl(wish.giftId)} alt={this.getName(wish.giftId)}/></td>
+                <td>{this.getName(wish.giftId)}</td>
+                <td>
+                  <button type="button" className="btn btn-warning" id="removeItem" name={wish._id} onClick = {this.onClick.bind(this)}>Remove</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     );
   }

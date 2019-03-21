@@ -23,7 +23,6 @@ export default class About extends Component {
         <div className = "How">
           <h1>❄️How to use❄️</h1><br/>
           <h4>❣️ Sign up a new account </h4>
-          <h4>❣️ Fill out the profile form </h4>
           <h4>❣️ Pick Christmas gifts from our inventory </h4>
           <ul>
             <li>Search for the gifts you want</li>

@@ -14,13 +14,13 @@ export default class NavBar extends Component {
     const userPage = (
       <ul className="navbar-nav ml-auto navbar-expand-lg ">
         <li className="nav-item">
+          <NavLink className="nav-link" activeClassName="active" to="/About">About</NavLink>
+        </li>
+        <li className="nav-item">
           <NavLink className="nav-link" activeClassName="active" to="/gifts">PickGifts</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink className="nav-link" activeClassName="active" to="/myWishes">MyWishes{this.state.size}</NavLink>
-        </li>
-        <li className="nav-item">
-          <NavLink className="nav-link" activeClassName="active" to="/Profile">Profile</NavLink>
+          <NavLink className="nav-link" activeClassName="active" to="/myWishes">MyWishes</NavLink>
         </li>
       </ul>
     );
