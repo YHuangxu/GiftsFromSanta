@@ -58,13 +58,15 @@ body {
 }
 
 .card {
-  background-image: url(https://i.pinimg.com/originals/f5/28/12/f528128832b3f4cce59e6173cd34f652.jpg);
+  background-image: url(https://img.freepik.com/free-vector/grounge-snowflakes-frame-iced-background_1048-347.jpg?size=338&ext=jpg);
   background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
   font-family: "Emilys Candy", cursive;
-  background-repeat: repeat;
+  background-repeat: no-repeat;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   margin: 1%;
-  padding: 2px;
+  padding: 5px;
   overflow: hidden;
   transition: 0.3s;
   width : 240px;
@@ -74,35 +76,28 @@ body {
 .card:hover {
   transform: scale(1.02);
 }
-
 .card-body {
   padding: 0.5rem !important;
 }
 .card-img-top {
-  padding:2%;
-  max-width: 240px;
-  max-height: 220px;
+  max-width: 240px !important;
+  max-height: 220px !important;
   overflow: hidden;
 }
-
 .img-box {
-  margin:3px;
-  padding:5px;
   background-color: white;
   opacity: 0.95;
-  width: 240px;
-  height: 220px;
+  width: 240px !important;
+  height: 220px !important;
   overflow: hidden;
   vertical-align: middle;
   display: table-cell;
 }
 
-.card .container {
-  padding: 5%;
-}
-
 .card .count {
   font-family: "Emilys Candy", cursive;
+  font-color: navy;
+  padding:7px;
 }
 
 button{
