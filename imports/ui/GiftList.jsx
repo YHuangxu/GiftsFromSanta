@@ -140,7 +140,7 @@ class GiftList extends Component {
                   </form>
                 </div>
                 <div className="modal-footer d-flex justify-content-center">
-                  <button className="btn btn-danger" data-dismiss="modal" onClick={this.onSubmit}>Submit</button>
+                  <button className="btn btn-danger" data-dismiss="modal" onClick={this.onSubmit}>Add It</button>
                 </div>
               </div>
             </div>
