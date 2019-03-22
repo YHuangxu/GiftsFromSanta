@@ -25,7 +25,7 @@ Meteor.methods({
     Gifts.insert({
       name: info.name,
       url: info.url,
-      amount: 1,
+      amount: 0,
       createdAt: Date.now()
     });
   }, 
