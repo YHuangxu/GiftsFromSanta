@@ -67,7 +67,7 @@ Here's the link to [Santa's Elf Factory](http://elffactory.herokuapp.com/)
 ![View and Post comments](https://github.com/MengBanana/CourseAdvisor/blob/master/gif/comments.gif)
 
 ## VideoDemonstration
-[Youtube](https://www.youtube.com/watch?v=Ju7KZzO14oA&feature=youtu.be)
+[Youtube](https://youtu.be/LhFrqLmHoyg)
 
 ## Presentation
 [Slides](https://docs.google.com/presentation/d/1tOrNGeMRYlETWJrJfDBMJ9fUn-qrKTttz7wLB-J0RT4/edit#slide=id.g35f391192_00) for the presentation
