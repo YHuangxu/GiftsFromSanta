@@ -25,6 +25,10 @@ class MyWishes extends Component {
     return Gifts.findOne({"_id": wishId.giftId});
   }
 
+  getWish(wishId) {
+    return Wishes.findOne({"_id": wishId});
+  }
+
   getGiftInfo(giftId){
     let info ={
       url:"",
@@ -40,6 +44,20 @@ class MyWishes extends Component {
   }
 
   onClick(evt) {
+    let wish = this.getWish(evt.target.name);
+    let info = {
+      id: wish.giftId,
+      amt: -1,
+      userId: Meteor.userId(),
+      userName: Meteor.user().username
+    };
+    Meteor.call("gifts.updateAmt", info,(err, res) => {
+      if (err) {
+        alert("There was error updating check the console");
+        console.log(err);
+      }
+      console.log("succeed",res);
+    });
     Meteor.call("wishes.remove", evt.target.name, (err, res) => {
       if (err) {
         alert("There was error updating check the console");
