@@ -56,15 +56,13 @@ Here's the link to [Santa's Elf Factory](http://elffactory.herokuapp.com/)
 
 ## Preview
 #### Home Page
-![Home Page](https://github.com/MengBanana/CourseAdvisor/blob/master/gif/Homepage.png)
-#### Register
-![Register](https://github.com/MengBanana/CourseAdvisor/blob/master/gif/register.gif)
-#### Login
-![Login](https://github.com/MengBanana/CourseAdvisor/blob/master/gif/login.gif)
-#### Search for courses and "like" Courses
-![Search for Courses](https://github.com/MengBanana/CourseAdvisor/blob/master/gif/search.gif)
-#### View, post and like comments
-![View and Post comments](https://github.com/MengBanana/CourseAdvisor/blob/master/gif/comments.gif)
+![Home Page](https://github.com/YHuangxu/SantasElfFactory/blob/master/demo/Home.png)
+#### Register & Login
+![Register & Login](https://github.com/YHuangxu/SantasElfFactory/blob/master/demo/register_login.gif)
+#### Gift list and wish list
+![Gift list and wish list](https://github.com/YHuangxu/SantasElfFactory/blob/master/demo/giftlist.gif)
+#### Add new gift
+![Add new gift](https://github.com/YHuangxu/SantasElfFactory/blob/master/demo/add.gif)
 
 ## VideoDemonstration
 [Youtube](https://youtu.be/LhFrqLmHoyg)
